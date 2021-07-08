@@ -1,0 +1,33 @@
+
+.App {
+  text-align: center;
+  display: flex;
+  background: #93A3BC;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#e4f5fc+0,bfe8f9+50,9fd8ef+51,2ab0ed+100;Blue+Gloss+%235 */
+background: #e4f5fc; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #e4f5fc 0%, #bfe8f9 50%, #9fd8ef 51%, #2ab0ed 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #e4f5fc 0%,#bfe8f9 50%,#9fd8ef 51%,#2ab0ed 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #e4f5fc 0%,#bfe8f9 50%,#9fd8ef 51%,#2ab0ed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#2ab0ed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+.active-link {
+  color: #053C5E;
+  border-bottom: 1px solid white;
+}
+
+.App-nav {
+  width: 50%;
+  display: flex;
+  margin: 1rem auto;
+  justify-content: space-around;
+}
+
+.JokeList img {
+  width: 50%;
+  border-radius: 50%;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);

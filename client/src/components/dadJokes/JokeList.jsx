@@ -27,8 +27,6 @@ class JokeList extends React.Component {
         let data = await axios.get('/dadJokes');
         console.log('data', data);
          jokeList.push(data.data.joke)
-         console.log(data.data.joke);
-         console.log(jokeList);
       }
       this.setState({
         jokeList: jokeList
@@ -56,11 +54,11 @@ class JokeList extends React.Component {
 
 render() {
   return (
-    <div>
-      <h5> My Favorite Quotes</h5>
-      <p>“Wake at dawn with winged heart. And give thanks for another day of loving!”.
-       Kahlil Gibran</p>
+    <div className="jokeList">
+
       <h5>Enjoy your jokes of the day</h5>
+      {/* <img src='https://assets.dryicons.com/uploads/icon/svg/8927/0eb14c71-38f2-433a-bfc8-23d9c99b3647.svg' /> */}
+      <button>Get more joke</button>
       <ul>
       {this.state.jokeList.map(joke => {
         return <Joke joke={joke}/>
