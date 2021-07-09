@@ -19,15 +19,53 @@ router.get('/translation', (req, res) => {
     }
   }
   )
-})
-router.get('/allDadJokes', (req, res) => {
-  axios.get('https://icanhazdadjoke.com/search?limit=3', {headers: {Accept: 'application/json'}})
-  .then((response) => {
-    for (var i = 0; i< response.data.results.length; i++) {
-      var joke = response.data.results[i].joke;
-      db.insertJoke(joke)
+});
+router.get('/whereToGo', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../client/dist/index.html'),(err) => {
+    if(err) {
+      res.status(400).send(err)
     }
-    res.status(200).send('successful insert into database');
+  }
+  )
+});
+router.get('/whatToDo', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../client/dist/index.html'),(err) => {
+    if(err) {
+      res.status(400).send(err)
+    }
+  }
+  )
+});
+router.get('/weather', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../client/dist/index.html'),(err) => {
+    if(err) {
+      res.status(400).send(err)
+    }
+  }
+  )
+});
+// router.get('/allDadJokes', (req, res) => {
+//   axios.get('https://icanhazdadjoke.com/search?limit=3', {headers: {Accept: 'application/json'}})
+//   .then((response) => {
+//     for (var i = 0; i< response.data.results.length; i++) {
+//       var joke = response.data.results[i].joke;
+//       db.insertJoke(joke)
+//     }
+//     res.status(200).send('successful insert into database');
+
+//   })
+//   .catch((err) => {
+//     res.status(404).send(err);
+//   })
+//   })
+router.get('/allDadJokes', (req, res) => {
+  axios.get('https://icanhazdadjoke.com/search?limit=1', {headers: {Accept: 'application/json'}})
+  .then((response) => {
+
+      var joke = response.data.results[0].joke;
+      db.insertJoke(joke)
+
+    res.status(200).send(response.data.results[0].joke);
 
   })
   .catch((err) => {
@@ -35,16 +73,26 @@ router.get('/allDadJokes', (req, res) => {
   })
   })
 
-
+// router.get('/dadJokes', (req, res) => {
+// axios.get('https://icanhazdadjoke.com/', {headers: {Accept: 'application/json'}})
+// .then((response) => {
+//   var joke = response.data.joke;
+//       db.insertJoke(joke)
+//   res.status(200).send(response.data);
+// })
+// .catch((err) => {
+//   res.status(404).send(err);
+// })
+// })
 router.get('/dadJokes', (req, res) => {
-axios.get('https://icanhazdadjoke.com/', {headers: {Accept: 'application/json'}})
-.then((response) => {
-  res.status(200).send(response.data);
-})
-.catch((err) => {
-  res.status(404).send(err);
-})
-})
+  axios.get('https://icanhazdadjoke.com/', {headers: {Accept: 'application/json'}})
+  .then((response) => {
+    res.status(200).send(response.data);
+  })
+  .catch((err) => {
+    res.status(404).send(err);
+  })
+  })
 
 router.post('/translate', async (req, res) => {
   console.log(req.query.q)
@@ -82,5 +130,13 @@ router.post('/translate', async (req, res) => {
   //   res.status(400).send(err)
   // })
 })
-
+router.get('/jokeList', (req, res) => {
+  db.getAllJokes((err, results) => {
+    if(err) {
+      res.status(404).send(err);
+    } else {
+      res.status(200).send(results.rows)
+    }
+  })
+} )
 module.exports = router;

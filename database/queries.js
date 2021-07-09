@@ -16,5 +16,13 @@ const insertJoke = (joke) => {
     }
   })
 }
-
-module.exports = {insertJoke};
+const getAllJokes = (callback) => {
+  pool.query('select * from jokes order by random() limit 10', (err, results) => {
+    if(err) {
+      callback(err, null);
+    } else {
+      callback(null, results)
+    }
+  })
+}
+module.exports = {insertJoke, getAllJokes};

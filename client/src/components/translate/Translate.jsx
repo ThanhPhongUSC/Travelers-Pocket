@@ -37,6 +37,8 @@ const Translate = () => {
       <hr/>
       <h3 className="ui header">Output</h3>
       <Output text={text} language={language}/>
+      <hr/>
+      <img height="300" width="600" src='https://adigaskell.org/wp-content/uploads/2018/09/machine-translation.jpg'/>
     </div>
   );
 };
